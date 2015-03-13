@@ -1,0 +1,37 @@
+<ion-view title='{{Friends.friends[Chat.currentIndex].name}}' id="chat-content">
+		<ion-content 
+		has-header="true" 
+		class="chat-big-box" 
+		id="chat-scroll" 
+		delegate-handle="chat-box"
+		ng-click="resetboard()">
+			<div class="chatunits" ng-repeat="msg in Chat.record[Chat.currentIndex].msg track by msg.hashkey">
+				<div class="chatbubble" ng-class="{'self':msg.type=='self','other':msg.type!='self'}">
+					<img class="chathead" ng-src="{{'img/'+Friends.friends[Chat.currentIndex].headsrc+'.png'}}" ng-show="msg.type!='self'"></img>
+					<img class="chathead" src="img/chol.png" ng-show="msg.type=='self'"></img>
+					<div class="chatpointer"></div>
+					<div class="chatmsg">{{msg.content}}</div>
+					<!-- <div class="ion-loading-d" ng-show="msg.type=='self'"></div> -->
+				</div>
+			</div>
+		</ion-content>
+
+		<div id="chat-form">
+		    <form class="bar bar-footer item item-input-inset chat-form" id="chat-input" name="chatform" ng-submit="Chat.input!='' &&sendmsg()">
+			    <label class="item-input-wrapper chat-input">
+			      <input type="text" ng-model="Chat.input" placeholder="">
+			    </label>
+			    
+			    <i class="button button-icon icon ion-happy-outline" ng-click="showEmoji()">
+			    </i>
+			    <i class="button button-icon icon ion-ios-plus-outline" ng-click="showAdd()">
+			    </i>
+
+		    </form>
+
+		    <div class="emoji-board" id="emoji-board"></div>
+			<div id="add-board"></div>
+		</div>
+</ion-view>
+
+

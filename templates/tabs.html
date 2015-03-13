@@ -1,0 +1,39 @@
+<ion-nav-bar 
+class="lab-nav-bar nav-title-slide-ios7 bar-positive" 
+id="navbar" 
+ng-click="resetboard()"
+align-title="center"
+>
+    <ion-nav-buttons side="left">
+      <img class="head-img" menu-toggle="left" id="communicate-head"
+      ng-show='currentslide==0' ng-src="{{headsrc}}">
+    </ion-nav-buttons>         
+    <ion-nav-back-button class="button-icon ion-arrow-left-c">      
+    </ion-nav-back-button>     
+    <ion-nav-buttons side="right">
+        <button class="button button-icon ion-ios-keypad-outline" 
+        id="communicate-more" 
+        menu-toggle="right" 
+        ng-show="state.current.name=='tab.dash' && currentslide==0" 
+        style="color:white;transition:all 0s;"></button>
+        <button class="button button-icon ion-ios-person-outline" 
+        ng-show="state.current.name=='tab.chat'" 
+        id="chat-profile" 
+        style="color:white;transition:all 0s;"></button>
+        <button class="button button-icon ion-ios-plus-empty" 
+        id="corp-add" 
+        ng-click="corpadd($event)" 
+        ng-show="state.current.name=='tab.dash' && currentslide==1" 
+        style="color:white;transition:all 0s;"></button>
+        <button class="button button-clear" 
+        ng-click="doSomething()" 
+        ng-show="state.current.name=='tab.dash' && currentslide==2" 
+        id="profile-manage" 
+        style="color:white;transition:all 0s;">
+        管理
+        </button>
+    </ion-nav-buttons>
+</ion-nav-bar>
+
+<ion-nav-view name="tabs"></ion-nav-view>
+

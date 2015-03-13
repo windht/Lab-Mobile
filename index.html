@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="css/ionic.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/date/classic.css" rel="stylesheet">
+    <link href="css/date/rtl.css" rel="stylesheet">
+    <link href="css/date/classic.date.css" rel="stylesheet">
+    <link href="css/date/classic.time.css" rel="stylesheet">  
+    <link href="css/ionicons.min.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="js/ionic.bundle.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="js/vendor/ng-cordova.min.js"></script>
+    <script src="cordova.js"></script>
+    
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/angular-datepicker.js"></script>
+    <script src="js/vendor/ui-bootstrap-0.12.0.min.js"></script>
+    <script src="js/vendor/ui-bootstrap-tpls-0.12.0.min.js"></script>
+    <script src="js/vendor/socket.io.js"></script>
+    <script src="js/vendor/socket.min.js"></script>
+    <script src="js/vendor/paper-full.min.js"></script>
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/mobile-event.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/team-controller.js"></script>
+    <script src="js/meeting-controller.js"></script>
+    <script src="js/rtc-controller.js"></script>
+    <script src="js/lab-socket.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/filter/filter.js"></script>
+  </head>
+  <body ng-app="labapp" animation="slide-left-right-ios7" ng-controller="MainCtrl">
+    <!-- 
+      The nav bar that will be updated as we navigate between views.
+    -->
+    
+    <!-- 
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-side-menus>
+      <ion-side-menu-content>  
+        <ion-nav-view></ion-nav-view>
+      </ion-side-menu-content>
+      <ion-side-menu side="left" class="lab-side-menu lab-left-side-menu" width="250" is-enabled="Func.sideMenu">
+        <div class="left-side-head">
+          <img ng-src="{{headsrc}}" ng-click="getpic()">
+          <p class="username">{{Auth.user}}</p>
+          <p class="badge">流程控制</p>
+          <p class="badge">内容开发</p>
+        </div>
+
+        <div class="left-side-signature">
+          <p>个性签名：为你铸心</p>
+        </div>
+
+        <div class="left-side-option">
+          <ion-scroll zooming="false" direction="y" style="width: 100%; height: 100%">
+            <div class="left-side-option-button ion-ios-flask-outline">
+              实验室
+            </div>
+
+            <div class="left-side-option-button ion-ios-cloud-outline">
+              乐道云
+            </div>
+
+            <div class="left-side-option-button ion-ios-monitor-outline">
+              电脑端协作
+            </div>
+
+            <div class="left-side-option-button ion-ios-lightbulb-outline">
+              点子中心
+            </div>
+
+            <div class="left-side-option-button ion-ios-calendar-outline">
+              日历
+            </div>
+          </ion-scroll>
+        </div>
+
+        <div class="left-side-footer">
+          <span class="ion-ios-gear-outline" ng-click="goto('tab.setting')">设置</span>
+          <span class="ion-ipad">页面定制</span>
+        </div>
+        
+      </ion-side-menu>
+      <ion-side-menu side="right" class="lab-side-menu lab-right-side-menu" width="100" is-enabled="Func.sideMenu">
+        <div class="right-side-option-button" ng-click="qrscan()">
+          <p class="option-icon ion-qr-scanner"></p>
+          <p class="option-text">扫一扫</p>
+        </div>
+        <div class="right-side-option-button">
+          <p class="option-icon ion-ios-chatboxes-outline"></p>
+          <p class="option-text">讨论组</p>
+        </div>
+        <div class="right-side-option-button">
+          <p class="option-icon ion-ios-plus-outline"></p>
+          <p class="option-text">添加朋友</p>
+        </div>
+        <div class="right-side-option-button">
+          <p class="option-icon ion-ios-compose-outline"></p>
+          <p class="option-text">创建通知</p>
+        </div>
+
+        
+        
+      </ion-side-menu>
+    </ion-side-menus>
+  </body>
+</html>

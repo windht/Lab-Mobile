@@ -1,0 +1,118 @@
+<ion-view>
+	<div class="tabs-striped">
+	    <div class="tabs tabs-icon-top tabs-color-active-positive">
+	      <a class="tab-item" href="" 
+	      ng-click="slideto(0)" 
+	      ng-class="{'active':currentslide==0}">
+	        <i class="icon ion-chatbubble-working"></i>
+	        沟通
+	      </a>
+	      <a class="tab-item" href="" 
+	      ng-click="slideto(1)"
+	      ng-class="{'active':currentslide==1}">
+	        <i class="icon ion-network"></i>
+	        协作
+	      </a>
+	    </div>
+	</div>
+	<ion-slide-box 
+		delegate-handle="commslide"
+		on-slide-changed="slideHasChanged($index)"
+		show-pager="false"
+		style="height:100%"
+	>
+		<!-- 沟通页 -->
+		  <ion-slide>
+		  	<ion-content>
+			  	<ion-refresher
+			    pulling-text="松开刷新"
+			    on-refresh="doRefresh()">
+			  	</ion-refresher>
+			  	<div class="friend-search-box item-input-inset">
+				  <label class="item-input-wrapper">
+				    <i class="icon ion-ios7-search placeholder-icon"></i>
+				    <input type="search" placeholder="搜索">
+				  </label>
+				</div>
+			    <ion-list
+			    	show-delete="false"
+			        show-reorder="false"
+			        can-swipe="true"
+			    >
+				    <ion-item class="item item-avatar communicate-chat-unit" href="" ng-repeat="friend in Friends.friends" ng-click="goto('tab.chat',{friendIndex:friend.index})">
+				      <img class="communicate-chat-head" ng-src="{{'img/'+friend.headsrc+'.png'}}">
+				      <h2>{{friend.name}}</h2>
+				      <p>{{friend.lastmsg}}</p>
+				      	<ion-option-button class="button-assertive lab-option-delete">
+					      删除
+					    </ion-option-button>
+					    <ion-delete-button class="ion-minus-circled">
+					    </ion-delete-button>
+					    <ion-reorder-button class="ion-navicon">
+					    </ion-reorder-button>
+				    </ion-item>
+				</ion-list>
+			</ion-content>
+		  </ion-slide>
+		  <ion-slide>
+		  	<ion-content>
+		  		<ion-refresher
+			    pulling-text="刷新任务"
+			    on-refresh="refreshTask()">
+			  	</ion-refresher>
+		   		<div class="list">
+		   			<div class="item item-divider">
+				      我的任务
+				    </div>
+				    <a class="item item-icon-left">
+					    <i class="icon ion-hammer"></i>
+					    	近期任务
+					    <span class="item-note">
+					        {{Task.todo | recentTask}}
+					    </span>
+					</a>
+					<a class="item item-icon-left">
+					    <i class="icon ion-wrench"></i>
+					    	过期任务
+					    <span class="item-note">
+					        {{Task.todo | deadTask}}
+					    </span>
+					</a>
+					<a class="item item-icon-left">
+					    <i class="icon ion-settings"></i>
+					    	全部任务
+					    <span class="item-note">
+					        {{Task.todo.length}}
+					    </span>
+					</a>
+					<div class="item item-divider">
+				      团队消息
+				    </div>
+				    <a class="item item-icon-left">
+						<i class="icon ion-android-wifi"></i>
+						新分配商榷
+						<span class="badge badge-assertive">0</span>
+					</a>
+					<a class="item item-icon-left">
+						<i class="icon ion-ios-eye-outline"></i>
+						提醒我关注
+						<span class="badge badge-assertive">0</span>
+					</a>
+					<div class="item item-divider">
+				      我的团队
+				    </div>
+				    <!-- <a class="item item-thumbnail-left" ng-click="goto('tab.meeting')">
+				      <img ng-src="{{headsrc}}">
+				      <h2>新的会议邀请！</h2>
+				      <p>来自于蔡志斌</p>
+				    </a> -->
+				    <a class="item item-icon-left" ng-click="goto('tab.team')">
+						<i class="icon ion-android-contacts"></i>
+						乐道团队
+					</a>
+				    
+				</div>
+		   </ion-content>
+		  </ion-slide>
+	</ion-slide-box>
+</ion-view>
